@@ -1,0 +1,61 @@
+<script>
+
+    /* 5. Реализовать основные 4 арифметические операции в виде функций с двумя параметрами.
+    Обязательно использовать оператор return.*/
+
+    function dividing(a, b) {
+        if (!b == 0) {
+            return a / b;
+        }
+        else console.log("На 0 делить нельзя");
+    }
+
+    function sum(c, numberValue) {
+        return numberValue + c;
+    }
+
+    function raction(a, b) {
+        return a - b;
+    }
+
+    function multiplying(a, b) {
+        return a * b;
+    }
+
+    function squareRoot(sum) { // для понимания, что это не арифметич.операция (для себя).
+        return Math.sqrt(sum);
+    }
+    var afterDividing, afterSum;
+    console.log(afterDividing = dividing(6, 3)); // 2
+    console.log(afterSum = sum(2, afterDividing)); //4
+    console.log(raction(4, 5)); //-1  
+    console.log(multiplying(3, 7)); //21
+    console.log(squareRoot(afterSum));// 2
+
+
+    /*
+    6. Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation),
+    где arg1, arg2 – значения аргументов, operation – строка с названием операции. 
+    В зависимости от переданного значения операции выполнить одну из арифметических операций 
+    (использовать функции из пункта 5) и вернуть полученное значение (использовать switch).
+    */
+    function mathOperation(arg1, arg2, operation) {
+
+        switch (operation) {
+            case "dividing": return dividing(arg1, arg2);
+            case "sum": return sum(arg1 + arg2);
+            case "raction": return raction(arg1 - arg2);
+            case "multiplying": return multiplying(arg1 * arg2);
+
+        }
+    }
+    mathOperation(5, 6, "dividing");
+    mathOperation(5, 6, "sum");
+    mathOperation(5, 6, "raction");
+    mathOperation(5, 6, "multiplying");
+
+
+
+
+
+</script>
