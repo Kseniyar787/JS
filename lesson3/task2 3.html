@@ -15,21 +15,25 @@
         var busket = [
             {
                 name: "dress",
-                price: 500
+                price: 500,
+                quantity: 1
             },
             {
                 name: "shoes",
-                price: 400
+                price: 400,
+                quantity: 1
             },
             {
                 name: "bag",
-                price: 300
+                price: 300,
+                quantity: 2
             }
         ];
 
         busket.push({
             name: "short",
-            price: 200
+            price: 200,
+            quantity: 1
         });
 
         for (var item of busket)
@@ -38,7 +42,7 @@
         function countBasketPrice() {
             var sum = 0;
             for (var i = 0; i < busket.length; i++) {
-                sum = sum + busket[i].price;
+                sum = sum + busket[i].price * busket[i].quantity;
 
             }
             alert(sum);
