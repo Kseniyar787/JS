@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+
+    <div>
+
+    </div>
+
+
+    <script>
+        var table = document.createElement("table"), tr, td;
+        table.style.borderSpacing = "0px";
+        table.style.borderCollapse = "collapse";
+
+        for (var i = 1; i <= 10; i++) {
+            tr = document.createElement("tr");
+            table.append(tr);
+
+            for (var j = 1; j <= 10; j++) {
+                td = document.createElement("td");
+                td.classList.add("cell");
+                tr.append(td);
+                if ((i + j) % 2 == 1)
+                    td.classList.add("cellBlack");
+
+            }
+            document.getElementsByTagName("div")[0].append(table);
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
