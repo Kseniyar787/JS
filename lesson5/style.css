@@ -1,9 +1,10 @@
 
 
 .cell {
-border: 1px solid rgb(140, 122, 122);
+border: 1px solid #c7bfbf;
 width: 40px;
 height: 40px;
+font-size: 27px;
 text-align: center;
 
 }
@@ -23,7 +24,7 @@ table {
 
 .cellBlack {
    
-    background-color: rgb(100, 85, 85);
+    background-color: #c7bfbf;
 }
 .textRotate {
     transform: rotate(180deg);
