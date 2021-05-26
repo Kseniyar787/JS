@@ -48,31 +48,30 @@
                         td.classList.add("cellBlack");
 
 
-                    //ЗАМЕНИМ БУКВЫ НА ШАХМАТНЫЕ ФИГУРКИ
+                    //ЗАМЕНИМ БУКВЫ НА ШАХМАТНЫЕ ФИГУРКИ  (к номерам фигур добавляю +6 )
 
                     if (i == 2 || i == 9) {
                         if (j == 2 || j == 9)
-                            td.innerHTML = "&#9814;"
+                            td.innerHTML = i == 2 ? "&#9814;" : "&#9820;";
                         //  td.innerText = "L";
                         else if (j == 3 || j == 8)
-                            td.innerHTML = "&#9816;"
+                            td.innerHTML = i == 2 ? "&#9816;" : "&#9822;";
                         // td.innerText = "K";
 
                         else if (j == 4 || j == 7)
                             // td.innerText = "S";
-                            td.innerHTML = "&#9815;"
+                            td.innerHTML = i == 2 ? "&#9815;" : "&#9821;";
                         else if (j == 5)
                             // td.innerText = "Q";
-                            td.innerHTML = "&#9812;"
+                            td.innerHTML = i == 2 ? "&#9812;" : "&#9818;";
                         else if (j == 6)
-                            td.innerHTML = "&#9813;"
+                            td.innerHTML = i == 2 ? "&#9813;" : "&#9819;";
                         // td.innerText = "F";
                     }
 
                     if ((i == 3 || i == 8) && j >= 2 && j <= 9) {
                         td.innerText = "P";
-                        td.innerHTML = "&#9823;"
-
+                        td.innerHTML = i == 3 ? "&#9817;" : "&#9823;"
                     }
                     if (i == 2 || i == 3)
                         td.classList.add("textRotate");
