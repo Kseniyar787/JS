@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <img class="b1" src="img/small/b1.jpg" alt="photo">
+    <img class="b2" src="img/small/b2.jpg" alt="photo">
+    <img class="b3" src="img/small/b3.jpg" alt="photo">
+
+    <img id="big_image" src="">
+
+
+    </img>
+    <script>
+
+        var imgs = document.querySelectorAll("img");
+        for (var i = 0; i < imgs.length; i++) {
+            if (imgs[i].id == "big_image")
+                imgs[i].onerror = function (e) {
+
+                    alert("Нет такого изображения!");
+                    e.target.style.display = "none";
+                }
+            else
+                imgs[i].onclick = function (e) {
+                    document.getElementById("big_image").src = "img/big/a" + e.target.className[1] + ".jpg";
+                    document.getElementById("big_image").style.display = "";
+
+                }
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

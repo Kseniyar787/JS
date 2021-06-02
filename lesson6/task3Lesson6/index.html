@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+
+</head>
+
+<body>
+    <div class="basket">
+        <div class="listOfGoods"></div>
+        <div class="qwt"></div>
+    </div>
+    <div class="goods"> </div>
+    <script>
+        var arrOfGoods = [
+            { photo: "img/images.jpg", name: "КРОССОВКИ RETALIATE", price: 6000.00 },
+            { photo: "img/images1.jpg", name: "КРОССОВКИ ADIDAS ORIGINALS", price: 7000.00 },
+            { photo: "img/images2.jpg", name: "КРОССОВКИ NIKE", price: 10000.00 }
+        ];
+
+        var basket = [];
+
+        for (var i = 0; i < arrOfGoods.length; i++) {
+            var good = arrOfGoods[i];
+
+            var div = document.createElement("div");
+            div.classList.add("goods_item");
+            var img = document.createElement("img");
+            img.src = good.photo;
+
+            var h3 = document.createElement("h3");
+            h3.innerText = good.name;
+
+            var priceOfGood = document.createElement("p");
+            priceOfGood.innerText = formatPrice(good.price);
+
+            var btn = document.createElement("button");
+            btn.innerText = "Купить";
+            btn.goodMem = good;
+            btn.onclick = function (e) {
+                //basket.push(e.target.goodMem);
+                var found = false; // предполагаем, что товара в корзине нет
+                for (var j = 0; j < basket.length; j++)
+                    if (basket[j].good == e.target.goodMem) {
+                        found = true;
+                        basket[j].quantity++;
+                        break;
+                    }
+                if (!found)
+                    basket.push({ good: e.target.goodMem, quantity: 1 });
+                console.log(basket); //для себя
+                drawBasket();
+            }
+
+            div.appendChild(img);
+            div.appendChild(h3);
+            div.appendChild(priceOfGood);
+            div.appendChild(btn);
+            document.getElementsByClassName("goods")[0].append(div);
+
+        }
+        drawBasket();
+
+        function drawBasket() {
+            var total = 0;
+            document.getElementsByClassName("listOfGoods")[0].innerHTML = "";
+            for (var i = 0; i < basket.length; i++) {
+                var good = basket[i].good;
+
+                var div = document.createElement("div");
+                div.classList.add("basket_goods_item");
+                var img = document.createElement("img");
+                img.src = good.photo;
+                img.classList.add("imgSmall");
+
+                var h3 = document.createElement("h3");
+                h3.innerText = good.name;
+
+                var priceOfGood = document.createElement("p");
+                priceOfGood.innerText = formatPrice(good.price);
+
+                var qwty = document.createElement("input");
+                qwty.type = "text";
+                qwty.classList.add("inputSmall");
+                qwty.value = basket[i].quantity;
+                qwty.basketItem = basket[i];
+
+                var btn = document.createElement("button");
+                btn.innerText = "X";
+                btn.goodMem = good;
+                btn.onclick = function (e) {
+                    for (var j = 0; j < basket.length; j++)
+                        if (basket[j].good == e.target.goodMem) {
+                            basket.splice(j, 1);
+                            break;
+                        }
+                    drawBasket();
+                }
+
+
+                div.appendChild(img);
+                div.appendChild(h3);
+                div.appendChild(priceOfGood);
+                div.appendChild(qwty);
+                div.appendChild(btn);
+                document.getElementsByClassName("listOfGoods")[0].append(div);
+                total += basket[i].quantity * good.price;
+            }
+
+            var sum = document.createElement("p");
+            sum.innerText = "Сумма: " + formatPrice(total);
+
+            var btnText = document.createElement("button");
+            btnText.innerText = "Пересчитать";
+            btnText.goodMem = good;
+            btnText.onclick = function (e) {
+                var arrs = document.getElementsByClassName("inputSmall");
+
+                for (var j = 0; j < arrs.length; j++) {
+                    arrs[j].basketItem.quantity = arrs[j].value;
+                }
+                drawBasket();
+            }
+
+            document.getElementsByClassName("qwt")[0].innerHTML = "";
+            document.getElementsByClassName("qwt")[0].append(btnText);
+            document.getElementsByClassName("qwt")[0].append(sum);
+
+        }
+
+        function formatPrice(t) {
+            return t + " ₽";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

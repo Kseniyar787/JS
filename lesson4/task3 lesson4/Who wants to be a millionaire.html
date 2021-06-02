@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        function isAnswer(q, events) {
+
+            if (isNaN(events) || !isFinite(events)) {
+                alert('Вы ввели недопустимый символ');
+                return false;
+            }
+            else if (events < 1 || events > q) {
+                alert('Ваше число выходит из допустимого диапозона');
+                return false;
+            }
+            return true;
+
+        }
+
+        var terms = [
+            { question: "Первый вопрос: \nКто на свете всех милее?", answers: ["1.Белоснежка", "2.Анджелина Джоли", "3.Инфузория туфелька"], rightAnswer: 0 },
+            { question: "Первый вопрос: \nКто на свете всех румяннее?", answers: ["1.Яблоко", "2.Анджелина Джоли", "3.Инфузория туфелька"], rightAnswer: 0 },
+            { question: "Первый вопрос: \nКто на свете всех чернее?", answers: ["1.Пиявка", "2.Анджелина Джоли", "3.Инфузория туфелька"], rightAnswer: 0 }
+        ];
+        var cheak, award = 1000, sum = 0, gameAnswer, ok;
+
+        cheak = confirm("Предлагаю сыграть в игру \"Кто хочеть стать миллионером\" \nЯ задам вам 3 вопроса, в качестве подсказки вы получите 3 варианта ответа. \n-1 - в случае выхода из игры");
+        if (cheak == false) {
+            alert("Жалко прощаться с вами!");
+            // break;
+        }
+        else {
+
+            for (var i = 0; i < terms.length; i++) {
+
+                do {
+                    ok = false;
+                    gameAnswer = +prompt(terms[i].question + "\n" + terms[i].answers.join("\n"));
+
+                    if (gameAnswer == -1) {
+                        break;
+                    }
+
+                    else {
+                        ok = isAnswer(terms[i].answers.length, gameAnswer);
+                    }
+                } while (!ok);
+
+                if (gameAnswer == -1) {
+                    alert("Спасибо за игру"); break;
+                }
+
+
+                if (gameAnswer == terms[i].rightAnswer + 1) {
+                    sum += award;
+                    alert("Поздравляю, это верный ответ. \nВы выиграли " + sum + " рублей.");
+                }
+                else {
+                    alert("Вы ответили неверно. \nСпасибо за игру. \nВаш выигрыш составил " + sum + " рублей.");
+                    break;
+                }
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

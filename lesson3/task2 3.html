@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        var busket = [
+            {
+                name: "dress",
+                price: 500,
+                quantity: 1
+            },
+            {
+                name: "shoes",
+                price: 400,
+                quantity: 1
+            },
+            {
+                name: "bag",
+                price: 300,
+                quantity: 2
+            }
+        ];
+
+        busket.push({
+            name: "short",
+            price: 200,
+            quantity: 1
+        });
+
+        for (var item of busket)
+            console.log(item.name + " стоит " + item.price);
+
+        function countBasketPrice() {
+            var sum = 0;
+            for (var i = 0; i < busket.length; i++) {
+                sum = sum + busket[i].price * busket[i].quantity;
+                
+
+            }
+            alert(sum);
+        }
+        countBasketPrice();
+
+
+
+
+    </script>
+</body>
+
+</html>
+

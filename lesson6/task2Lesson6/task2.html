@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="clider container">
+        <img class="img_change" src="" alt="photo" width="500px">
+        <button onclick="b()" class="btn back"> <img onclick="b()" src="img/back .svg" alt="forward" width="20px">
+        </button>
+        <button onclick="f()" class="btn forward"> <img onclick="f()" src="img/forward.svg" alt="forward"
+                width="20px"></button>
+    </div>
+
+
+    <script>
+        var arr = ["images1.jpg", "images2.jpg", "images3.jpg", "images4.jpg"];
+        var list_slider = 0;
+        showImg();
+
+        function showImg() {
+            document.getElementsByClassName("img_change")[0].src = "img/" + arr[list_slider];
+        }
+
+        function f() {
+            if (list_slider < arr.length - 1) {
+                list_slider++;
+                showImg();
+            }
+        }
+
+        function b() {
+            if (list_slider > 0) {
+                list_slider--;
+                showImg();
+            }
+        }
+
+    </script>
+</body>
+
+</html>

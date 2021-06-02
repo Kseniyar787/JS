@@ -1,0 +1,30 @@
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.clider {
+    position: relative; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+
+    position: absolute;
+    padding: 15px;
+    border: 0;
+    background-color: #e1dad5;;
+
+}
+
+.forward {
+    right: 100px;
+
+}
+.back {
+    
+    left: 100px;
+}

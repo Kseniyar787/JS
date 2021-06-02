@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+
+    <div>
+    </div>
+    <script>
+        var table = document.createElement("table"), tr, td;
+        var str = "ABCDEFGH";
+        for (var i = 1; i <= 10; i++) {
+            tr = document.createElement("tr");
+            tr.classList.add("cellTr");
+            table.append(tr);
+
+
+            for (var j = 1; j <= 10; j++) {
+                td = document.createElement("td");
+                td.classList.add("cell");
+
+                tr.append(td);
+                if (i == 1 || i == 10 || j == 1 || j == 10) {
+                    if ((j == 10 || j == 1) && i >= 2 && i <= 9)
+                        td.innerText = 9 - (i - 1);
+                    if ((i == 10 || i == 1) && j >= 2 && j <= 9)
+                        // td.innerText = String.fromCharCode(65 + j - 2);
+                        td.innerText = str[j - 2];
+                    if ((i == 1 || j == 10))
+                        td.classList.add("textRotate");
+                    td.classList.add("cellHid");
+                }
+
+                else {
+                    if ((i + j) % 2 == 1)
+                        td.classList.add("cellBlack");
+
+                    //ЗАМЕНИМ БУКВЫ НА ШАХМАТНЫЕ ФИГУРКИ  (к номерам фигур добавляю +6 )
+                    if (i == 2 || i == 9) {
+                        if (j == 2 || j == 9)
+                            td.innerHTML = i == 2 ? "&#9814;" : "&#9820;";
+                        //  td.innerText = "L";
+                        else if (j == 3 || j == 8)
+                            td.innerHTML = i == 2 ? "&#9816;" : "&#9822;";
+                        // td.innerText = "K";
+
+                        else if (j == 4 || j == 7)
+                            // td.innerText = "S";
+                            td.innerHTML = i == 2 ? "&#9815;" : "&#9821;";
+                        else if (j == 5)
+                            // td.innerText = "Q";
+                            td.innerHTML = i == 2 ? "&#9812;" : "&#9818;";
+                        else if (j == 6)
+                            td.innerHTML = i == 2 ? "&#9813;" : "&#9819;";
+                        // td.innerText = "F";
+                    }
+
+                    if ((i == 3 || i == 8) && j >= 2 && j <= 9) {
+                        td.innerText = "P";
+                        td.innerHTML = i == 3 ? "&#9817;" : "&#9823;"
+                    }
+                    if (i == 2 || i == 3)
+                        td.classList.add("textRotate");
+                }
+            }
+            document.getElementsByTagName("div")[0].append(table);
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
